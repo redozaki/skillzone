@@ -1,4 +1,6 @@
-from django.shortcuts import HttpResponse
-
+from django.http import HttpResponse
+from django.template import loader
+# Create your views here.
 def home(request):
-    return HttpResponse("You're at the skillzone index.")
+	template = loader.get_template('home.html')
+	return HttpResponse(template.render())

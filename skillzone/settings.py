@@ -54,7 +54,7 @@ ROOT_URLCONF = 'skillzone.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / "skillzone"/"templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
