@@ -1,11 +1,11 @@
 from django.http import HttpResponse
-from django.template import loader
 from django.shortcuts import render, redirect
 from .forms import UserForm
+from.models import User
 # Create your views here.
 def users(request):
-	template = loader.get_template('users.html')
-	return HttpResponse(template.render())
+	users = User.objects.all()
+	return render(request , 'users.html' ,{'users' : users})
 def create(request) :
 	if request.method == 'POST':
 		form = UserForm(request.POST)
