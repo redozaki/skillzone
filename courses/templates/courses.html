@@ -1,7 +1,27 @@
 <!DOCTYPE html>
 <html>
 <body>
+	<a href="{% url 'home' %}">SKILLZONE</a>
 <h1>courses page</h1>
 <h2>list of courses</h2>
+{% if courses %}
+<ul>
+	{% for course in courses %}
+        <li><a href={{course.title }}>{{course.title }}</a>  type : {{course.type}} <br> description : {{course.description }}</li>
+		{% if course.lessons%}
+			<ol>
+				{% for lesson in course.lessons.all %}
+					<li>{{lesson.title}} </li>
+				{% endfor %}
+			</ol>
+		{% else %}
+            <p>No lessons found for this course.</p>
+		{% endif %}
+		<br>
+    {% endfor %}
+{%else%}
+    <p>No courses found.</p>
+</ul>
+{% endif %}
 </body>
 </html>
