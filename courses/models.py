@@ -19,7 +19,7 @@ class course(models.Model) :
 			raise ValidationError('Soft courses must be free.')
 		if self.type == types.hard and self.price == 0 :
 			raise ValidationError('Hard courses must have a price.')
-	def save(self):
+	def save(self, *args, **kwargs):
 		self.full_clean()
 		super().save()
 class lesson(models.Model) :
@@ -32,7 +32,7 @@ class lesson(models.Model) :
 	class Meta:
 		ordering = ['position']
 		unique_together = ['course', 'position']
-	def save(self) :
+	def save(self, *args, **kwargs) :
 		if not self.content :
 			try :
 				self.content = read_text(materials, f'{self.title}.txt', encoding='utf-8')
