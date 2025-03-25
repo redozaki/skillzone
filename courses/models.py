@@ -22,6 +22,8 @@ class course(models.Model) :
 	def save(self, *args, **kwargs):
 		self.full_clean()
 		super().save()
+		def __str__(self):
+			return self.username
 class lesson(models.Model) :
 	course = models.ForeignKey(course, related_name='lessons', on_delete=models.CASCADE)
 	title = models.CharField(max_length=100)
@@ -39,3 +41,5 @@ class lesson(models.Model) :
 			except :
 				self.content = f"Content for lesson {self.title} not found."
 		super().save()
+	def __str__(self):
+		return super().__str__()
