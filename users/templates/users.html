@@ -2,8 +2,18 @@
 <html>
 <body>
 
+<a href="{% url 'home' %}">SKILLZONE</a>
 <h1>users page</h1>
 <h2>list of users</h2>
 <a href="creat">create user</a>
+{% if users %}
+    <ul>
+        {% for user in users %}
+            <li>{{ user.username }}  points : {{user.points}}</li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>No users found.</p>
+{% endif %}
 </body>
 </html>
