@@ -1,11 +1,11 @@
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import UserForm
-from.models import User
+from .models import Profile
 # Create your views here.
 def users(request):
-	users = User.objects.all()
-	return render(request , 'users.html' ,{'users' : users})
+	Profiles = Profile.objects.all()
+	return render(request , 'users.html' ,{'profiles' : Profiles})
 def create(request) :
 	if request.method == 'POST':
 		form = UserForm(request.POST)
